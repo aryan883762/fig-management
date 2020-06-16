@@ -1,4 +1,4 @@
-# fig-frontend
+# fig-Management-VUE
 
 ## Project setup
 ```

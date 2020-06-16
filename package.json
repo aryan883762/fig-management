@@ -1,0 +1,49 @@
+{
+  "name": "fig-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@casl/ability": "^4.1.5",
+    "@casl/vue": "^1.1.1",
+    "@websanova/vue-auth": "^3.2.1-beta",
+    "axios": "^0.19.2",
+    "core-js": "^3.6.5",
+    "material-icons": "^0.3.1",
+    "moment": "^2.26.0",
+    "moment-timezone": "^0.5.31",
+    "perfect-scrollbar": "^1.4.0",
+    "smoothscroll-polyfill": "^0.4.4",
+    "tailwindcss": "^1.4.6",
+    "vue": "^2.6.11",
+    "vue-axios": "^2.1.5",
+    "vue-backtotop": "^1.6.1",
+    "vue-feather-icons": "^5.0.0",
+    "vue-perfect-scrollbar": "^0.1.0",
+    "vue-router": "^3.2.0",
+    "vue-select": "^3.1.0",
+    "vue-window-size": "^0.2.5",
+    "vuelendar": "^1.0.0",
+    "vuesax": "^3.11.15",
+    "vuescroll": "^4.16.0",
+    "vuex": "^3.4.0",
+    "wolfy87-eventemitter": "^5.2.9"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.4.0",
+    "@vue/cli-plugin-eslint": "~4.4.0",
+    "@vue/cli-plugin-router": "~4.4.0",
+    "@vue/cli-plugin-vuex": "~4.4.0",
+    "@vue/cli-service": "~4.4.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.11"
+  }
+}

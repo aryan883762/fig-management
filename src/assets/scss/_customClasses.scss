@@ -488,6 +488,9 @@
     .vs-sidebar--header {
       border-bottom: none!important;
     }
+    .vs-sidebar--items {
+      padding: 0 !important;
+    }
   }
 }
 
@@ -537,24 +540,6 @@
   color: $content-color;
 }
 
-// ======================================================================================
-// Users List
-// ======================================================================================
-
-.user-list {
-  display: flex;
-
-  & .con-vs-avatar {
-    transition: 0.3s;
-
-    &:hover {
-      transform: translateY(-5px) scale(1.07);
-      box-shadow: 0 14px 24px rgba(62, 57, 107, 0.2);
-      // transform: translateY(-5px);
-      z-index: 999;
-    }
-  }
-}
 
 // ======================================================================================
 // Uncategorized
@@ -572,34 +557,8 @@ ul.bordered-items {
 }
 
 // ======================================================================================
-// Event Details
+// Custom Background Color
 // ======================================================================================
-
-#event-details-page {
-  .profile-img-container {
-    display: flex;
-    align-items: center;
-    position: absolute;
-    bottom: 1.5rem;
-    left: 5%;
-    width: 90%;
-    justify-content: space-between;
-  }
-
-  .user-profile-img {
-    border: 0.3rem solid #fff;
-    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.3);
-  }
-
-  .user-latest-image {
-    transition: all 0.2s ease-in-out;
-
-    &:hover {
-      transform: scale(1.2);
-    }
-  }
-
-  .profile-header-nav {
-    background-color: #fff;
-  }
+.bg-grey-custom {
+ background-color: #f4f4f4 !important;
 }

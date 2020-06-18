@@ -93,6 +93,7 @@
           <vs-divider class="m-1" />
           <li
             class="flex py-2 px-4 cursor-pointer hover:bg-primary hover:text-white"
+            @click="logout"
           >
             <feather-icon
               icon="LogOutIcon"
@@ -118,7 +119,19 @@ export default {
       img: require('@/assets/images/portrait/small/avatar-s-2.jpg'),
       role: 'admin'
     }
-  })
+  }),
+  methods: {
+    logout() {
+      this.$vs.notify({
+        title: 'Success',
+        text: 'Logout successfully!',
+        iconPack: 'feather',
+        icon: 'icon-check',
+        color: 'success'
+      });
+      this.$router.push('/').catch(() => {})
+    }
+  }
 }
 
 </script>

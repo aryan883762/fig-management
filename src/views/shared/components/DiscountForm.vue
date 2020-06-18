@@ -2,7 +2,7 @@
   <div class="">
     <vs-sidebar
       position-right
-      parent="body"
+      parent="#app"
       default-index="1"
       color="primary"
       class="drawer-form"
@@ -23,77 +23,154 @@
               <feather-icon
                 icon="XIcon"
                 svg-classes="w-6 h-6"
+                class="cursor-pointer"
                 @click="$closeDrawer()"
               />
             </div>
           </div>
-          <div class="mt-5 mr-12">
-            <v-select :options="bookingTypes" v-model="bookingType" />
-          </div>
         </div>
       </div>
       <vue-scroll>
-        <div class="venue-booking w-full pb-12">
+        <div class="w-full pb-12">
           <div class="px-10 pt-0">
-            <vs-divider position="left">
-              WHO IS SERVICE FOR
-            </vs-divider>
             <div class="flex-1 mt-5">
               <div class="vx-row">
                 <div class="vx-col w-full mb-2">
-                  <vs-input
-                    label="Email"
-                    placeholder="Your Email"
-                    name="email"
-                    class="w-full"
-                  />
+                  <vs-input label="Discount code name" class="w-full" />
                 </div>
               </div>
               <div class="vx-row">
                 <div class="vx-col sm:w-1/2 w-full mb-5">
                   <vs-input
-                    label="First Name"
+                    label="Account off"
                     placeholder="Name"
                     class="w-full"
                   />
                 </div>
                 <div class="vx-col sm:w-1/2 w-full mb-5">
-                  <vs-input
-                    label=" Last Name"
-                    placeholder="Last Name"
-                    class="w-full"
-                  />
+                  <label class="vs-input--label">Amount type</label>
+                  <v-select class="cursor-pointer" />
                 </div>
               </div>
               <vs-divider position="left">
-                WHERE IS SERVICE
+                VALID FOR
               </vs-divider>
               <div class="vx-row">
-                <div class="vx-col sm:w-3/5 w-full mb-5">
-                  <vs-input
-                    label="Address"
-                    placeholder="Address"
-                    class="w-full"
+                <div class="vx-col w-full mb-2">
+                  <label class="vs-input--label">Services or Extras</label>
+                  <v-select class="cursor-pointer" />
+                </div>
+              </div>
+              <div class="vx-row">
+                <div class="vx-col w-full mb-2">
+                  <label class="vs-input--label">Locations</label>
+                  <v-select class="cursor-pointer" />
+                </div>
+              </div>
+              <div class="vx-row">
+                <div class="vx-col w-full mb-2">
+                  <label class="vs-input--label">Teams</label>
+                  <v-select class="cursor-pointer" />
+                </div>
+              </div>
+
+              <div class="vx-row">
+                <div class="vx-col sm:w-1/2 w-full mb-5">
+                  <label class="vs-input--label block">Start Date</label>
+                  <flat-pickr
+                    v-model="startDate"
+                    placeholder="Select date"
+                    name="startDate"
                   />
                 </div>
-                <div class="vx-col sm:w-2/5 w-full mb-5">
-                  <vs-input label="Address2" class="w-full" />
+                <div class="vx-col sm:w-1/2 w-full mb-5">
+                  <label class="vs-input--label block">End Date</label>
+                  <flat-pickr
+                    v-model="endDate"
+                    placeholder="Select date"
+                    name="endDate"
+                  />
                 </div>
               </div>
               <div class="vx-row">
-                <div class="vx-col sm:w-1/2 w-full mb-5">
-                  <vs-input label="City" placeholder="City" class="w-full" />
-                </div>
-                <div class="vx-col sm:w-1/2 w-full mb-5">
-                  <vs-input label="State" class="w-full" />
+                <div class="vx-col w-full mb-5 px-5">
+                  <div
+                    class="grid row-gap-2 grid-cols-7 font-medium text-black"
+                  >
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+                    <div>Sun</div>
+                  </div>
+                  <div
+                    class="grid row-gap-2 grid-cols-7 font-medium text-black"
+                  >
+                    <div><vs-checkbox class="inline-flex"></vs-checkbox></div>
+                    <div><vs-checkbox class="inline-flex"></vs-checkbox></div>
+                    <div><vs-checkbox class="inline-flex"></vs-checkbox></div>
+                    <div><vs-checkbox class="inline-flex"></vs-checkbox></div>
+                    <div><vs-checkbox class="inline-flex"></vs-checkbox></div>
+                    <div><vs-checkbox class="inline-flex"></vs-checkbox></div>
+                    <div><vs-checkbox class="inline-flex"></vs-checkbox></div>
+                  </div>
                 </div>
               </div>
-              <vs-divider position="left">
-                WHICH SERVICE
-              </vs-divider>
               <div class="vx-row">
                 <div class="vx-col w-full mb-5">
-                  <vs-input label="Service Type" class="w-full" />
+                  <ul class="centerx mb-5 mt-3">
+                    <li class="mb-4">
+                      <vs-radio v-model="customerType" vs-value="1"
+                        >New customers only</vs-radio
+                      >
+                    </li>
+                    <li class="mb-4">
+                      <vs-radio v-model="customerType" vs-value="2"
+                        >Recurring customers only</vs-radio
+                      >
+                    </li>
+                    <li class="mb-4">
+                      <vs-radio v-model="customerType" vs-value="3"
+                        >Non-Recurring customers only</vs-radio
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <vs-divider position="left">
+                RESTRICTIONS
+              </vs-divider>
+              <div class="vx-row">
+                <div class="vx-col w-full mb-2">
+                  <vs-checkbox class="inline-flex"
+                    >Discount team pay</vs-checkbox
+                  >
+                </div>
+              </div>
+              <div class="vx-row">
+                <div class="vx-col w-full flex mb-2">
+                  <vs-checkbox class="inline-flex">
+                    Limit
+                  </vs-checkbox>
+                  <vs-input placeholder="1 use" class="w-24" size="small" />
+                  <label class="ml-2">per customer</label>
+                </div>
+              </div>
+              <vs-divider />
+              <div class="vx-row">
+                <div class="vx-col sm:w-3/6 w-full mb-5">
+                  <vs-checkbox class="inline-flex"
+                    >Can be combined with other offers</vs-checkbox
+                  >
+                </div>
+              </div>
+              <div class="vx-row">
+                <div class="vx-col flex sm:w-3/6 w-full mb-5">
+                  <vs-checkbox class="inline-flex">Limit to</vs-checkbox>
+                  <vs-input placeholder="1 use" class="w-24" size="small" />
+                  <label class="ml-2">total</label>
                 </div>
               </div>
             </div>
@@ -102,14 +179,8 @@
                 type="filled"
                 @click="isRequestSubmitted = !isRequestSubmitted"
               >
-                Submit
+                Create code
               </vs-button>
-            </div>
-            <div class="flex items-center justify-center mt-10">
-              <p class="text-xs">
-                By proceeding, you agree to our Terms of Service and Privacy
-                Policy.
-              </p>
             </div>
           </div>
         </div>
@@ -121,6 +192,7 @@
 <script>
 import { Route } from "vue-router";
 import vSelect from "vue-select";
+
 export default {
   name: "DiscountForm",
   components: {
@@ -128,7 +200,7 @@ export default {
   },
   data: () => ({
     active: false,
-    eventType: "Business",
+    customerType: 1,
     eventDate: null,
     isDateFlexible: "yes",
     isSendRequest: true,
@@ -137,6 +209,8 @@ export default {
       { label: "Appointment", value: 1 },
       { label: "Event", value: 2 },
     ],
+    startDate: null,
+    endDate: null,
   }),
   created() {
     const self = this;

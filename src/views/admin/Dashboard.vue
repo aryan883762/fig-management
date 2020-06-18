@@ -15,32 +15,40 @@
         </div>
         <div class="vx-col w-full xl:w-3/5 lg:w-3/5 p-0">
           <div class="vx-row">
-            <div class="vx-col flex items-center w-full xl:w-1/6 lg:w-1/6 mb-2 xl:mb-0 lg:mb-0">
+            <div
+              class="vx-col flex items-center w-full xl:w-1/6 lg:w-1/6 mb-2 xl:mb-0 lg:mb-0"
+            >
               <h6>Filter by:</h6>
             </div>
             <div class="vx-col w-full xl:w-1/3 lg:w-1/3 mb-2 xl:mb-0 lg:mb-0">
               <v-select
                 :options="locationList"
                 :clearable="true"
+                class="custom-select"
+                placeholder="Location"
               />
             </div>
             <div class="vx-col w-full xl:w-1/4 lg:w-1/4 mb-2 xl:mb-0 lg:mb-0">
               <v-select
                 :options="teamList"
                 :clearable="true"
+                class="custom-select"
+                placeholder="Team"
               />
             </div>
             <div class="vx-col w-full xl:w-1/4 lg:w-1/4 mb-2 xl:mb-0 lg:mb-0">
-               <v-select
+              <v-select
                 :options="statusList"
                 :clearable="true"
+                class="custom-select"
+                placeholder="Status"
               />
-              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="grid row-gap-2 grid-cols-7 font-medium text-black">
+    <div class="hidden md:grid row-gap-2 grid-cols-7 font-medium text-black">
       <div class="p-4">Date</div>
       <div class="p-4">Time</div>
       <div class="p-4">Client Name</div>
@@ -50,23 +58,32 @@
       <div class="p-4">Status</div>
     </div>
     <div
-      class="grid row-gap-2 grid-cols-7 bg-white mt-5 font-medium shadow rounded"
+      class="flex flex-col md:grid md:row-gap-2 md:grid-cols-7 relative bg-white mt-5 font-medium shadow rounded"
       v-for="item in bookingList"
       :key="item.id"
     >
-      <div class="p-5 text-black">
-        <p class="ml-4">{{ item.date }}</p>
-        <vs-chip>
+      <div class="px-8 py-2 md:p-5 text-black text-right md:text-left">
+        <span class="inline md:hidden">Date:</span>
+        <span class="ml-1">{{ item.date }}</span>
+        <vs-chip class="absolute right-0 mr-6 md:relative">
           WEEKLY
         </vs-chip>
       </div>
-      <div class="p-5 text-black">{{ item.time }}</div>
-      <div class="p-5 font-light">{{ item.name }}</div>
-      <div class="p-5">
-        <p class="text-black">{{ item.address }}</p>
+      <div class="px-8 py-2 md:p-5 text-black">
+        <span class="inline md:hidden">Time:</span>
+        {{ item.time }}
+        </div>
+      <div class="px-8 py-2 md:p-5font-light">
+        <span class="inline md:hidden">Client name:</span>
+        {{ item.name }}</div>
+      <div class="px-8 py-2 md:p-5">
+        <p class="text-black">
+          <span class="inline md:hidden">Service location:</span>
+          {{ item.address }}</p>
         <p class="text-secondary">Location: {{ item.location }}</p>
       </div>
-      <div class="p-5">
+      <div class="px-8 py-2 md:p-5 ">
+        <span class="inline md:hidden">Service type:</span>
         <p class="font-light">
           {{ item.serviceType["name"] | truncate(30, "...") }}
         </p>
@@ -77,9 +94,11 @@
           }}
         </p>
       </div>
-      <div class="p-5 text-black">{{ item.assignedTo }}</div>
-      <div class="p-5">
-        <!-- <vs-button
+      <div class="px-8 py-2 md:p-5 text-black">
+        <span class="inline md:hidden">Assign to:</span>
+        {{ item.assignedTo }}</div>
+      <div class="px-8 py-2 md:p-5 absolute md:relative right-0 bottom-0">
+        <vs-chip
           :color="
             item.status === 'Pending'
               ? 'dark'
@@ -87,37 +106,27 @@
               ? 'success'
               : 'warning'
           "
-          type="border"
-          size="small"
-          >{{ item.status }}</vs-button> -->
-
-        <vs-chip     :color="
-            item.status === 'Pending'
-              ? 'dark'
-              : item.status === 'Completed'
-              ? 'success'
-              : 'warning'
-          ">
+        >
           {{ item.status }}
         </vs-chip>
       </div>
     </div>
-    <BookingForm/>
-    <DiscountForm/>
+    <BookingForm />
+    <DiscountForm />
     <router-view />
   </div>
 </template>
 <script>
 import VRangeSelector from "../../components/vuelendar/components/vl-range-selector";
-import vSelect from 'vue-select'
-import BookingForm from '../shared/components/BookingForm'
-import DiscountForm from '../shared/components/DiscountForm'
+import vSelect from "vue-select";
+import BookingForm from "../shared/components/BookingForm";
+import DiscountForm from "../shared/components/DiscountForm";
 export default {
   components: {
     VRangeSelector,
     vSelect,
     BookingForm,
-    DiscountForm
+    DiscountForm,
   },
   data: () => ({
     bookingList: [
@@ -211,7 +220,7 @@ export default {
     ],
     range: {},
     hideCalendar: true,
-    active: true
+    active: true,
   }),
   watch: {
     range: {
@@ -262,28 +271,26 @@ export default {
       this.hideCalendar = !this.hideCalendar;
     },
   },
-  created(){
-  
-  }
+  created() {},
 };
 </script>
 <style lang="scss">
-    @import "../../components/vuelendar/scss/vuelendar.scss";
-    //  .classic-caledar {
-    //         position: absolute;
-    //         z-index: 9;
-    //         .vl-calendar {
-    //           .vl-calendar-month{
-    //               .vl-calendar-month__title{
-    //                 margin-bottom: 5px!important;
-    //               }
-    //               .vl-flex{
-    //                 border: 1px solid #e8eced;
-    //                 &.classic-days{
-    //                     padding: 10px 0px 0px 5px;
-    //                 }
-    //               }
-    //           }
-    //         }
-    //      }  
+@import "../../components/vuelendar/scss/vuelendar.scss";
+//  .classic-caledar {
+//         position: absolute;
+//         z-index: 9;
+//         .vl-calendar {
+//           .vl-calendar-month{
+//               .vl-calendar-month__title{
+//                 margin-bottom: 5px!important;
+//               }
+//               .vl-flex{
+//                 border: 1px solid #e8eced;
+//                 &.classic-days{
+//                     padding: 10px 0px 0px 5px;
+//                 }
+//               }
+//           }
+//         }
+//      }
 </style>

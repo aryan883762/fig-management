@@ -3,12 +3,12 @@
 .v-select {
   &:not(.vs--single) {
     .vs__selected {
-      font-size: .9rem;
+      font-size: 0.9rem;
     }
   }
 
   .vs__dropdown-toggle {
-    padding: .59px 0 4px 0;
+    padding: 3.1px 0 6.5px 0;
 
     .vs__search {
       color: $content-color;
@@ -23,20 +23,20 @@
     }
 
     .vs__selected-options {
-      flex-wrap: nowrap!important;
+      flex-wrap: nowrap !important;
       .vs__selected {
         // margin: 0px 4px 0;
-        max-width: 90px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        // max-width: 90px;
+        // white-space: nowrap;
+        // overflow: hidden;
+        // text-overflow: ellipsis;
       }
     }
 
     .vs__actions {
-      position: absolute;
-      right: 0;
-      top: 4px;
+      // position: absolute;
+      // right: 0;
+      // top: 4px;
       .vs__clear {
         color: $content-color;
       }
@@ -44,7 +44,7 @@
   }
 
   .vs__dropdown-menu {
-    width: unset!important;
+    //width: unset !important;
     .vs__dropdown-option--highlight {
       // background: rgba(var(--vs-primary),1) !important;
       color: $white !important;
@@ -55,12 +55,35 @@
     }
   }
 
-
   .vs__selected {
     color: $content-color;
   }
 }
-
+.v-select.custom-select {
+  .vs__dropdown-toggle {
+    .vs__selected-options {
+      flex-wrap: nowrap !important;
+      .vs__selected {
+        // margin: 0px 4px 0;
+        max-width: 90px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    .vs__actions {
+      position: absolute;
+      right: 0;
+      top: 8px;
+      .vs__clear {
+        color: $content-color;
+      }
+    }
+  }
+      .vs__dropdown-menu {
+      width: unset !important;
+    }
+}
 
 // Override vars
 
@@ -70,7 +93,6 @@ $vs-component-line-height: 1.8;
 //  Active State
 $vs-state-active-bg: $primary !default;
 $vs-state-active-color: $white !default;
-
 
 // @import '~vue-select/src/scss/vue-select.scss';
 @import "vue-select/src/scss/vue-select.scss";

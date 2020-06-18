@@ -13,7 +13,10 @@ import './assets/scss/main.scss'
 import "./plugins/vuesax.js";
 import "./plugins/window-resize";
 import "./plugins/vueScroll";
+import "./plugins/flatDatePicker"
+import "./plugins/veeValidate"
 import "./filters/filters";
+
 // Globally Registered Components
 import './plugins/globalComponents'
 import smoothscroll from "smoothscroll-polyfill";

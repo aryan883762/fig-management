@@ -21,6 +21,7 @@ body {
 
 #app {
   min-height: 100%;
+  overflow: hidden;
 }
 
 .router-view {
@@ -120,12 +121,6 @@ body {
 // ======================================================================================
 // Other
 // ======================================================================================
-
-div[id$="demo"] {
-  .vx-card:not(:last-of-type) {
-    margin-bottom: 2.2rem;
-  }
-}
 
 .vue-back-to-top {
   z-index: 51000 !important;
